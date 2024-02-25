@@ -19,9 +19,9 @@ Gods game is a combination of a the **Roguelike**, **Hardcore** and **Survival**
 + Permadeath
 
 ***Tribes of midgard***
-![image](https://github.com/ymersod/GMD/assets/95355670/47bea0d0-ebb1-437e-9846-fe012dee736a)
 + Base of operations
 + Explore
+![image](https://github.com/ymersod/GMD/assets/95355670/47bea0d0-ebb1-437e-9846-fe012dee736a)
 
 ***Don't starve***
 ![image](https://github.com/ymersod/GMD/assets/95355670/4175a64c-a0ea-4cc9-8c0f-99d4f5b5f149)
