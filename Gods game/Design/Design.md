@@ -1,8 +1,9 @@
-Gods game.
+# Gods game.
 ONE life… this is the gods gift to all that lives. The difference lies in being able to use this ONE oppurtunity to achieve greatness. ONE turn into the unkown might make the difference. Its time to prove you’re worthy of gods gift.
 
-Concept
-Gods game is a combination of a the Roguelike, Hardcore and Survival genres. And has the subgenres of extraction and sandbox.
+## Concept
+### Genres**
+Gods game is a combination of a the **Roguelike**, **Hardcore** and **Survival** genres. And has the subgenres of **extraction** and **sandbox**.
 The target audience is people that want to challenge themselves in a truly thrilling experience. Using the bartle model the primary audience is for achievers and killers. But it might attract some exploreres.
 https://en.wikipedia.org/wiki/Bartle_taxonomy_of_player_types
 Gods game will offer a unique twist on the roguelike and in most cases survival genre where death is not something you gloss over, this is the games biggest selling point as it ensures a dopamine inducing experience while playing it. Gods game offers a special system where the player will have a base of operations, from here the player can gear up for a run into the ‘wilds’ – in the wilds the player will have to scavenge for supplies to aid them in an unknown procedually generated world to survive drawing their own map of the mysterious land.. who knows what horrors this world holds.
