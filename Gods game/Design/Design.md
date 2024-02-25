@@ -5,25 +5,25 @@ ONE life… this is the gods gift to all that lives. The difference lies in bein
 ### Genres
 Gods game is a combination of a the **Roguelike**, **Hardcore** and **Survival** genres. And has the subgenres of **extraction** and **sandbox**.
 ### Inspiration
-Escape from tarkov:
+***Escape from tarkov***
 ![image](https://github.com/ymersod/GMD/assets/95355670/3eb0e24b-6cc9-4257-b3c8-305d246ad305)
 + Scavenging for loot
 + Always makes the player feel on edge
 + Death is a massive setback
 + Combining linear & vertical progression
 
-Realm of the mad god,
+***Realm of the mad god***
 ![image](https://github.com/ymersod/GMD/assets/95355670/8120799e-46a9-45dd-a077-caa2b930ed3a)
 + Graphics
 + FoV
 + Permadeath
 
-tribes of midgard,
+***Tribes of midgard***
 ![image](https://github.com/ymersod/GMD/assets/95355670/47bea0d0-ebb1-437e-9846-fe012dee736a)
 + Base of operations
 + Explore
 
-Don't starve
+***Don't starve***
 ![image](https://github.com/ymersod/GMD/assets/95355670/4175a64c-a0ea-4cc9-8c0f-99d4f5b5f149)
 + Permadeath
 + Survival system
