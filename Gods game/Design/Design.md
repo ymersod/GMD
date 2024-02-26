@@ -32,7 +32,7 @@ The following games have elements that will be intepreted
 + Sandbox
 
 ### Audience
-The target audience is people that want to challenge themselves in a truly thrilling experience. Using the bartle model the primary audience is for achievers and killers. It might also attract some **exploreres**. https://en.wikipedia.org/wiki/Bartle_taxonomy_of_player_types
+The target audience is people that want to challenge themselves in a truly thrilling experience. Using the [bartle model](https://en.wikipedia.org/wiki/Bartle_taxonomy_of_player_types) the primary audience is for achievers and killers. It might also attract some **exploreres**. 
 
 ### Selling point
 Gods game will offer a unique twist on the roguelike and in most cases survival genre where death is not something you gloss over, this is the games biggest selling point as it ensures a dopamine inducing experience while playing it. Gods game offers a special system where the player will have a base of operations, from here the player can gear up for a run into the ‘unknown’ – in the unknown the player will have to scavenge for supplies to aid them in an procedually generated world to survive drawing their own map of the mysterious land.. who knows what horrors this world holds.
