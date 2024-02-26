@@ -5,7 +5,8 @@ ONE life… this is the gods gift to all that lives. The difference lies in bein
 ### Genres
 Gods game is a combination of a the **Roguelike**, **Hardcore** and **Survival** genres. And has the subgenres of **extraction** and **sandbox**.
 ### Inspiration
-The following games have elements that will be intetrepeted.
+The following games have elements that will be intepreted
+
 ***Escape from tarkov***
 <img src="https://github.com/ymersod/GMD/assets/95355670/3eb0e24b-6cc9-4257-b3c8-305d246ad305" width="100%" height="100%">
 + Scavenging for loot
