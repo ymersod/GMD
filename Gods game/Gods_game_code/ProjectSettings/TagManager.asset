@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Weapon_collider_tag
+  - enemy
   layers:
   - Default
   - TransparentFX
@@ -38,6 +40,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Ground
+    uniqueID: 254095639
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ground_top
+    uniqueID: 806205245
+    locked: 0
+  - name: Characters
+    uniqueID: 1318962365
+    locked: 0
+  - name: Weapons
+    uniqueID: 2466936839
     locked: 0
