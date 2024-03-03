@@ -15,9 +15,10 @@ GameObject:
   - component: {fileID: 6440201151684687014}
   - component: {fileID: 6341910417028941955}
   - component: {fileID: 4759858526253393953}
+  - component: {fileID: 3430301058730315908}
   m_Layer: 0
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,9 +103,9 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
-  m_Mass: 0.0001
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 0.1
+  m_LinearDrag: 100
+  m_AngularDrag: 10
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -213,7 +214,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0065079927, y: -0.34720272}
+  m_Offset: {x: -0.0065079927, y: 0.00095129013}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -224,8 +225,22 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3635972, y: 0.17559457}
+  m_Size: {x: 0.3635972, y: 0.8719026}
   m_EdgeRadius: 0
+--- !u!114 &3430301058730315908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2674868617316251707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c16b209b4846a94fbe5a23103756791, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  max_health: 100
+  current_health: 100
 --- !u!1 &3381607765019440867
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,7 +267,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.2854977, y: 1.4926924, z: -9.483704}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5230761327290844956}
@@ -266,6 +281,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5230761327290844956}
     m_Modifications:
+    - target: {fileID: 4065442567538169422, guid: bacfff18b1168374e874744e0d63f761, type: 3}
+      propertyPath: dmg
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 5338483285618866529, guid: bacfff18b1168374e874744e0d63f761, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
