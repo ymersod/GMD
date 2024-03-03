@@ -1,5 +1,5 @@
 # Gods game.
-ONE life… this is the gods gift to all that lives. The difference lies in being able to use this ONE oppurtunity to achieve greatness. ONE turn into the unkown might make the difference. Its time to prove you’re worthy of gods gift.
+ONE life… this is gods gift to all that lives. The difference lies in being able to use this ONE oppurtunity to achieve greatness. ONE turn into the unknown might make the difference. It's time to prove you’re worthy of gods gift.
 
 ## Concept
 ### Genres
@@ -35,15 +35,15 @@ The following games have elements that will be intepreted
 The target audience is people that want to challenge themselves in a truly thrilling experience. Using the [bartle model](https://en.wikipedia.org/wiki/Bartle_taxonomy_of_player_types) the primary audience is for **achievers** and **killers**. It might also attract some **exploreres**. 
 
 ### Selling point
-Gods game will offer a unique twist on the roguelike and in most cases survival genre where death is not something you gloss over, this is the games biggest selling point as it ensures a dopamine inducing experience while playing it. Gods game offers a special system where the player will have a base of operations, from here the player can gear up for a run into the ‘unknown’ – in the unknown the player will have to scavenge for supplies to aid them in an procedually generated world to survive drawing their own map of the mysterious land.. who knows what horrors this world holds.
+**Gods game** will offer a unique twist on the roguelike and in most cases survival genre where _death_ is not something you gloss over, this is the games biggest selling point as it ensures a dopamine inducing experience while playing it. **Gods game** offers a special system where the player will have a base of operations, from here the player can gear up for a run into the _‘unknown’_ – in the unknown the player will have to scavenge for supplies to aid them in an procedually generated world to survive drawing their own map of the mysterious land.. who knows what horrors this world holds.
 
 ## Product design
 ### Player experience
-The player will be playing as themselves. What differs from real life is that the player will be constantly gambling their life in gods game. I want the player to feel anxious, terrified, excited and accomplisment all at the same time, like going all in og black in roulette. What keeps the player coming back will be the dopamine, where else can you get the thrill of gambling 100+ hours of your life building your character?
+The player will be playing as themselves. What immerses them in the fantasy is that contrary to real life, the player will be constantly gambling their life in gods game. I want the player to feel anxious, terrified, excited and accomplisment all at the same time, like going all in og black in roulette. What keeps the player coming back will be the dopamine, where else can you get the thrill of gambling 100+ hours of your life building your character?
 
 ### Setting
-The setting of the game will friendly and welcoming close to the base, but the further you wander into the unknown the more dark and gloomy area will become. the world was created by god to see if you’re worthy of his gift before being born earth.
-You will be set in a small toturial starting as a boy growing up with his father – but at some point some dark forces drags him away and you’re left to fend for yourself.
+The setting of the game will friendly and welcoming close to the base, but the further you wander into the unknown the more dark and gloomy area will become. the world was created by god to see if you’re worthy of his gift.
+You will be set in a small toturial starting as a kid growing up with his father – but at some point some dark forces drags him away and you’re left to fend for yourself.
 
 ### Monetization
 The game will sell for a one time fee of  2$-10$.
@@ -61,7 +61,7 @@ The player will be able to move in 8 directions, the end will be reachin god so 
 
 ### Important game systems
 + Procedurelly genereted world
-+ AI enemies
++ AI system for enemies
 + Crafting system
 + VERY customizable ability/weapon system
 
