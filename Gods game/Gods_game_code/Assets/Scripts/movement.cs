@@ -3,46 +3,52 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Tilemaps;
 
-public class movement : MonoBehaviour
+public class Movement : MonoBehaviour
 {
-    // Start is called before the first frame update
     private Rigidbody2D rb_player;
-    private Transform t_player;
     private Vector2 moveInput;
     private Animator player_anim;
     private BoxCollider2D player_boxcollider;
-    /* [SerializeField]
-    private Vector2 boxcastSize = new Vector2(0.5f, 0.5f); */
     public float speed = 5f;
+    private bool is_dashing = false;
+    private bool can_dash = true;
+    [SerializeField] private float dash_force = 10f;
+    [SerializeField] private float dash_time = 2f;
+    [SerializeField] private float dash_cooldown = 2f;
     /* [SerializeField] private float immobilizeTimeout  = 0.2f; */
+     /* [SerializeField]
+    private Vector2 boxcastSize = new Vector2(0.5f, 0.5f); */
     void Start()
     {
         rb_player = gameObject.GetComponent<Rigidbody2D>();
-        t_player = gameObject.GetComponent<Transform>();
         player_anim = gameObject.GetComponent<Animator>();
         player_boxcollider = gameObject.GetComponent<BoxCollider2D>();
+        
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-
-        if(!IsVectorZero(moveInput) && IsVectorZero(rb_player.velocity))
+        if(is_dashing)
+        {
+            return;
+        } 
+        if(!IsVectorZero(moveInput))
         {
             player_anim.SetBool("IsMoving", true);
-            MovePlayer(moveInput);
+            rb_player.velocity = speed * moveInput;
         }
         else
         {
-            
             player_anim.SetBool("IsMoving", false);
         }
     }
 
-    public void MovePlayer(Vector2 move)
+    bool IsVectorZero(Vector2 vector)
     {
-        rb_player.MovePosition(rb_player.position + speed * Time.fixedDeltaTime * move);
+        return vector == Vector2.zero;
     }
 
     void OnMove(InputValue value)
@@ -55,11 +61,27 @@ public class movement : MonoBehaviour
             player_anim.SetFloat("YInput", direction.y);
         }
     }
-
-    bool IsVectorZero(Vector2 vector)
+    private IEnumerator Dash(Vector2 direction)
     {
-        return vector == Vector2.zero;
+        can_dash = false;
+        is_dashing = true;
+        var elapsedTime = 0f;
+        while(elapsedTime < dash_time)
+        {
+            rb_player.velocity= direction * dash_force;
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        is_dashing = false;
+        yield return new WaitForSeconds(dash_cooldown);
+        can_dash = true;
     }
+    void OnDash()
+    {
+        if(can_dash) StartCoroutine(Dash(moveInput));
+    }
+
+
 
     /* bool RayCastForEnemyHitBox()
     {   
@@ -78,7 +100,6 @@ public class movement : MonoBehaviour
         }
         return false;
     } */
-
    
 }
 

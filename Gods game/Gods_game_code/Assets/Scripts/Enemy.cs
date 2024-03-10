@@ -17,10 +17,10 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        enemy_anim = this.GetComponent<Animator>();
-        enemy_rb = this.GetComponent<Rigidbody2D>();
-        enemy_ps = this.GetComponent<ParticleSystem>();
-        damage_flash = this.GetComponent<DamageFlash>();
+        enemy_anim = GetComponent<Animator>();
+        enemy_rb = GetComponent<Rigidbody2D>();
+        enemy_ps = GetComponent<ParticleSystem>();
+        damage_flash = GetComponent<DamageFlash>();
         enemy_rb.drag = drag;
         enemy_rb.mass = weight;
     }
@@ -30,7 +30,6 @@ public class Enemy : MonoBehaviour
         health -= damage;
         if(health > 0)
             enemy_rb.AddForce(lastAttackInput * knockback, ForceMode2D.Impulse);
-            enemy_anim.SetTrigger("Hit");
             ParticleSystem.ShapeModule ps_rotation = enemy_ps.shape;
             ps_rotation.rotation = CalculateRotation(lastAttackInput);
             damage_flash.TakeDamage();
@@ -49,6 +48,7 @@ public class Enemy : MonoBehaviour
     public void Die()
     {
         gameObject.GetComponent<Collider2D>().enabled = false;
+        StartCoroutine(RollForLoot.Instance.DropLoot(transform, GetComponent<Drops>().drops));
         enemy_anim.SetTrigger("Death");
     }
 
@@ -61,7 +61,7 @@ public class Enemy : MonoBehaviour
             {
                 direction += contact.normal;
             }
-            collision.gameObject.GetComponent<PlayerStatus>().TakeDmg(contact_dmg, contact_knockback, direction);
+            StartCoroutine(collision.gameObject.GetComponent<PlayerStatus>().TakeDmg(contact_dmg, contact_knockback, direction));
         }
     }
 }

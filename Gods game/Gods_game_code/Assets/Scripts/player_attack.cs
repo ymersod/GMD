@@ -11,6 +11,11 @@ public class player_attack : MonoBehaviour
     [SerializeField] private float dmg = 50f;
     [SerializeField] private float knockback = 10f;
     [SerializeField] private Transform attackPoint;
+    [SerializeField] private float alt_speed = 10f;
+    [SerializeField] private float alt_dmg = 10f;
+    [SerializeField] private float alt_knockback = 10f;
+    [SerializeField] private float alt_size = 2f;
+    [SerializeField] private GameObject fireball;
     private Vector2 lastMoveInput;
     private Vector2 lastAttackDirection;
     float timeUntilMeele;
@@ -44,9 +49,13 @@ public class player_attack : MonoBehaviour
         }
     }
 
+    void OnAltFire(InputValue value)
+    {
+        StartCoroutine(Spawner.Instance.SpawnFireBall(lastMoveInput, transform.position, alt_speed, alt_size, alt_dmg, alt_knockback, fireball));
+    }
+
     void OnTriggerEnter2D(Collider2D col)
     {
-        //TODO: Bug where if i move the other direction last split second after hitting an enemy, the enemy will be knocked back in the wrong direction
         if(col.gameObject.CompareTag("enemy"))
         {
             col.gameObject.GetComponent<Enemy>().TakeDamage(dmg, knockback, lastAttackDirection);

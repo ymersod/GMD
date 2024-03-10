@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 6341910417028941955}
   - component: {fileID: 4759858526253393953}
   - component: {fileID: 3430301058730315908}
+  - component: {fileID: 8510040035397495462}
+  - component: {fileID: 7385405408662324727}
   m_Layer: 0
   m_Name: Body
   m_TagString: Player
@@ -32,7 +34,7 @@ Transform:
   m_GameObject: {fileID: 2674868617316251707}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.31, y: -16.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -79,7 +81,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1318962365
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -1174464091, guid: 313b96dd4158a6648bfc8cef1889fb25, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -181,7 +183,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd13a198eab05e34cb060c600bba28c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 15
+  dash_force: 50
+  dash_time: 0.15
+  dash_cooldown: 2
 --- !u!61 &4759858526253393953
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -214,7 +219,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0065079927, y: 0.00095129013}
+  m_Offset: {x: -0.0026989132, y: -0.00056545436}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -225,7 +230,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3635972, y: 0.8719026}
+  m_Size: {x: 0.27979693, y: 0.70140815}
   m_EdgeRadius: 0
 --- !u!114 &3430301058730315908
 MonoBehaviour:
@@ -241,6 +246,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   max_health: 100
   current_health: 100
+  knockback_duration: 0.5
+--- !u!114 &8510040035397495462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2674868617316251707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf91bbd08252796428935b372657c7cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  char_position: {fileID: 5230761327290844956}
+  radius: 0.15
+  los_radius: 4
+  world_tilemap: {fileID: 0}
+  color: {r: 1, g: 0, b: 0, a: 1}
+--- !u!114 &7385405408662324727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2674868617316251707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d776c48f126344e41a351c848fc4d7d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  world_tilemap: {fileID: 0}
+  los_tag: Player
+  target_tag: Piggy
+  los_radius: 4
 --- !u!1 &3381607765019440867
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,6 +324,10 @@ PrefabInstance:
       propertyPath: dmg
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 4065442567538169422, guid: bacfff18b1168374e874744e0d63f761, type: 3}
+      propertyPath: fireball
+      value: 
+      objectReference: {fileID: 2262493719507991182, guid: a728a325c9037b34c9d8a60527335a15, type: 3}
     - target: {fileID: 5338483285618866529, guid: bacfff18b1168374e874744e0d63f761, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

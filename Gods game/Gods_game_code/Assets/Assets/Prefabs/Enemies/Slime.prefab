@@ -18,6 +18,10 @@ GameObject:
   - component: {fileID: 5730919895378264321}
   - component: {fileID: 3992523701830684983}
   - component: {fileID: 4955016425213893829}
+  - component: {fileID: 4869261516441944342}
+  - component: {fileID: 5073466884988381394}
+  - component: {fileID: 5681203794042915500}
+  - component: {fileID: 3894324171905295932}
   m_Layer: 9
   m_Name: Body
   m_TagString: enemy
@@ -5018,6 +5022,70 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &4869261516441944342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3002824080688481048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d776c48f126344e41a351c848fc4d7d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  world_tilemap: {fileID: 0}
+  los_tag: Slime
+  target_tag: Player
+  los_radius: 4
+--- !u!114 &5073466884988381394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3002824080688481048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ea2e3541a4e02f45b61db07a9131857, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5681203794042915500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3002824080688481048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccb13a3a0c157d649880d825ac691e13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprint_speed: 20
+  quick_cast_indicator: {fileID: 8297968240646559042, guid: 1291cf1eab5ad7d42ae068696e701505, type: 3}
+  attack_width: 10
+  attack_length: 10
+  attack_chargeup_duration: 2
+  attack_force: 40
+  attack_range: 2
+  timeout_var: 2
+--- !u!114 &3894324171905295932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3002824080688481048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57a464715b389b94f8a09621e8e66d2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drop_weight: 010000000a000000
+  drop_items:
+  - {fileID: 7833688469647639206, guid: b56f6ea8adfab584b92ebcd35e781aff, type: 3}
+  - {fileID: 3115338670939256917, guid: ce4f2c963a06b56468086a30c2225900, type: 3}
 --- !u!1 &4675143720160425336
 GameObject:
   m_ObjectHideFlags: 0

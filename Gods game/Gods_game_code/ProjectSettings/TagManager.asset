@@ -17,10 +17,10 @@ TagManager:
   - 
   - 
   - Enemy
-  - 
-  - 
-  - 
-  - 
+  - Enemy_projectiles
+  - Player
+  - PlayerProjectiles
+  - PostFX
   - 
   - 
   - 
