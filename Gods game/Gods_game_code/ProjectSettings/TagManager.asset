@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Weapon_collider_tag
   - enemy
+  - bag_item
+  - item_ui
+  - equipped_item
+  - Player_parent
   layers:
   - Default
   - TransparentFX

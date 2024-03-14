@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 6341910417028941955}
   - component: {fileID: 4759858526253393953}
   - component: {fileID: 3430301058730315908}
-  - component: {fileID: 8510040035397495462}
   - component: {fileID: 7385405408662324727}
   m_Layer: 0
   m_Name: Body
@@ -247,23 +246,6 @@ MonoBehaviour:
   max_health: 100
   current_health: 100
   knockback_duration: 0.5
---- !u!114 &8510040035397495462
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2674868617316251707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf91bbd08252796428935b372657c7cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  char_position: {fileID: 5230761327290844956}
-  radius: 0.15
-  los_radius: 4
-  world_tilemap: {fileID: 0}
-  color: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &7385405408662324727
 MonoBehaviour:
   m_ObjectHideFlags: 0
