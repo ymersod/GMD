@@ -10303,7 +10303,7 @@ GameObject:
   - component: {fileID: 4629459933308387607}
   - component: {fileID: 2566035223392781432}
   m_Layer: 0
-  m_Name: Grid
+  m_Name: World_map
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
