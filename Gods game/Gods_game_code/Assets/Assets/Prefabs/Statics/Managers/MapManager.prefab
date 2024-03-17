@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7932568369806140222}
-  - component: {fileID: 2168670471554307141}
+  - component: {fileID: 966220533114257922}
+  - component: {fileID: 260292106633743725}
   m_Layer: 0
   m_Name: MapManager
   m_TagString: Untagged
@@ -17,7 +17,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7932568369806140222
+--- !u!4 &966220533114257922
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -26,13 +26,13 @@ Transform:
   m_GameObject: {fileID: 2656149595517962220}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.433339, y: -0.19290355, z: -9.972184}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2168670471554307141
+--- !u!114 &260292106633743725
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,7 +41,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2656149595517962220}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fa07b5b58a36fd47b3f5157ab2a05bf, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c0f949b638b06f4f9162745a4609d7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brush_prefab: {fileID: 4789411481621213674, guid: b89b52069207d414595686779c7b841b, type: 3}
+  map: {fileID: 7722033039890082072, guid: 470c156643883d94580cf79efaf17bfd, type: 3}
+  brushPrefab: {fileID: 9119738444974484247, guid: 546f88d2ee760244290007481a7a229f, type: 3}
+  BrushGUIEditFlags: {fileID: 0}

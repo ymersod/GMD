@@ -45,6 +45,8 @@ public class InitPlayerSetup : MonoBehaviour
         InventoryManager.instance.player = player;
         InventoryManager.instance.InitEquippedItem(new_weap, new_weap.transform.GetComponentInChildren<SpriteRenderer>(true).sprite);
 
+        DrawManager.instance.player = player;
+
         Instantiate(BaseMap);
 
         DontDestroyOnLoad(transform.gameObject);

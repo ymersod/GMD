@@ -8,6 +8,8 @@ using UnityEngine.UI;
 
 public class Ui_image_controller : MonoBehaviour
 {
+    [SerializeField] private GameObject map;
+    private SpriteRenderer map_renderer;
     GraphicRaycaster m_Raycaster;
     PointerEventData m_PointerEventData;
     EventSystem m_EventSystem;
@@ -20,8 +22,10 @@ public class Ui_image_controller : MonoBehaviour
         m_Raycaster = GetComponent<GraphicRaycaster>();
         m_EventSystem = GetComponent<EventSystem>();
         var playerInput = GetComponent<PlayerInput>();
+        Events.instance.Map += () => HandleUIEnabling("map_placeholder");
         Events.instance.Inventory += () => HandleUIEnabling("inventory_image");
-        Events.instance.Map += () => HandleUIEnabling("map_image");
+        map = Instantiate(map);
+        map_renderer = map.GetComponent<SpriteRenderer>();
 
         currentUI = OpenUIEnum.Bag;
 
@@ -64,7 +68,7 @@ public class Ui_image_controller : MonoBehaviour
     }
     private List<RaycastResult> UiRayCast()
     {
-        //Set the Pointer Event Position to that of the mouse position
+            //Set the Pointer Event Position to that of the mouse position
             m_PointerEventData.position = Input.mousePosition;
 
             //Create a list of Raycast Results
@@ -76,12 +80,15 @@ public class Ui_image_controller : MonoBehaviour
     }
     IEnumerator StartDraw()
     {
+        DrawManager.instance.StartBrush();
         while(isDrawing)
         {
-            DrawMap.instance.Draw(UiRayCast());
+            var topLeft = new Vector2(map_renderer.bounds.min.x, map_renderer.bounds.max.y);
+            var bottomRight = new Vector2(map_renderer.bounds.max.x, map_renderer.bounds.min.y);
+            DrawManager.instance.Draw(topLeft, bottomRight, map);
             yield return new WaitForEndOfFrame();
         }
-        DrawMap.instance.ResetBrush();
+        DrawManager.instance.ResetBrush(map);
         yield return null;
     }
 
@@ -102,20 +109,30 @@ public class Ui_image_controller : MonoBehaviour
                 if(child.gameObject.activeInHierarchy) active_ui = child.gameObject;
             }
         }
-        SetUiStatus(active_ui);
+        HandleMap(SetUiStatus(active_ui));
     }
 
-    private void SetUiStatus(GameObject active_ui)
+    private OpenUIEnum SetUiStatus(GameObject active_ui)
     {
         if(active_ui == null)
         {
             currentUI = OpenUIEnum.NoUiOpen;
-            return;
+            return currentUI;
         }
         currentUI = active_ui.name switch {
             "inventory_image" => OpenUIEnum.Bag,
-            "map_image" => OpenUIEnum.Map, 
+            "map_placeholder" => OpenUIEnum.Map, 
             _ => OpenUIEnum.NoUiOpen
         };
+        return currentUI;
+    }
+    
+    private void HandleMap(OpenUIEnum active_ui)
+    {
+        if(active_ui == OpenUIEnum.Map)
+        {
+            map.SetActive(true);
+        } 
+        else map.SetActive(false);
     }
 }
