@@ -12,7 +12,6 @@ public class Events : MonoBehaviour
     public event Action Interact;
     public event Action Map; 
     public event Action Inventory;
-    public event Action Draw;
 
     void Awake()
     {

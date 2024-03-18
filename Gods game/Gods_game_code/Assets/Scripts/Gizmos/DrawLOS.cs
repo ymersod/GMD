@@ -17,8 +17,6 @@ public class DrawLOS : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        print(Vector3Int.right - Vector3Int.right*2);
-        print(Vector3Int.down - Vector3Int.down*2);
         if(world_tilemap != null)
         {
             Vector3 playerPosition = transform.position;
@@ -26,7 +24,6 @@ public class DrawLOS : MonoBehaviour
 
             var tile_size = 1f;
             Vector3 center_tile = new(cellPosition.x + tile_size / 2, cellPosition.y + tile_size / 2, 0);
-            
             DrawLineOfSight(center_tile, cellPosition, radius, los_radius, tile_size);
         }
 
@@ -106,6 +103,19 @@ public class DrawLOS : MonoBehaviour
         var totalXdiff = diff.x;
         var totalYdiff = diff.y;
         
+        if(Math.Abs(totalXdiff) - Math.Abs(totalYdiff) >= corner_LOS_size)
+        {
+            if(IsInvalidCorner(cellPos, no_los_tiles)) return false;
+        }
+        else if(Math.Abs(totalYdiff) - Math.Abs(totalXdiff) >= corner_LOS_size)
+        {
+            if(IsInvalidCorner(cellPos, no_los_tiles)) return false;
+        }
+        else if(Math.Abs(totalXdiff) - Math.Abs(totalYdiff) == 0)
+        {
+            if(IsInvalidDiagonal(cellPos, no_los_tiles, centerTile, moveX, moveY, totalXdiff)) return false;
+        }
+
         var currentPos = cellPos;
         var xMoveValid = moveX != Vector3Int.zero;
         var yMoveValid = moveY != Vector3Int.zero;
@@ -137,26 +147,49 @@ public class DrawLOS : MonoBehaviour
                 totalXdiff = prevTotalXdiff;
                 totalYdiff = prevTotalYdiff;
                 
-                if(moveChosen == moveX) 
-                {
-                    if(Math.Abs(totalYdiff) - Math.Abs(totalXdiff) >= corner_LOS_size) return false;
-                    xMoveValid = false;
-                }
-                else
-                {
-                    if(Math.Abs(totalXdiff) - Math.Abs(totalYdiff) >= corner_LOS_size) return false;
-                    yMoveValid = false;
-                }
+                if(moveChosen == moveX) xMoveValid = false;
+                else yMoveValid = false;
+                
                 i--;
             }
             else
             {
                 if(moveChosen == moveY) xMoveValid = true;
-                else if(moveChosen == moveX) yMoveValid = true;
-                
+                else if(moveChosen == moveX) yMoveValid = true;      
             }
-
             if(!xMoveValid && !yMoveValid) return false;
+        }
+        return false;
+    }
+
+    private bool IsInvalidDiagonal(Vector3Int cellPos, List<Vector3Int> no_los_tiles, Vector3Int centerTile, Vector3Int moveX, Vector3Int moveY, float distance)
+    {
+        var current_testing_cell = cellPos;
+        for(int i = 0; i < distance; i++)
+        {
+            current_testing_cell += moveX;
+            current_testing_cell += moveY;
+            if(no_los_tiles.Contains(current_testing_cell)) return true;
+        }
+        return false;
+    }
+
+    private bool IsInvalidCorner(Vector3Int cellPos, List<Vector3Int> no_los_tiles)
+    {
+        var arr = new Vector3Int[4]{
+            Vector3Int.up, 
+            Vector3Int.right, 
+            Vector3Int.down, 
+            Vector3Int.left
+        };
+        
+        for(int i = 0; i < arr.Length; i++)
+        {
+             var current_testing_cell = cellPos;
+            if(no_los_tiles.Contains(current_testing_cell + arr[i]))
+            {
+                return true;
+            }
         }
         return false;
     }

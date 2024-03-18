@@ -8,7 +8,7 @@ using UnityEngine.Tilemaps;
 public class LOSManager : MonoBehaviour
 {
     public static LOSManager Instance { get; private set; }
-    private Dictionary<string, Vector2[]> LOS = new();
+    private Dictionary<string, List<Vector3>> LOS = new();
     private GameObject player;
     public Tilemap ground_tilemap { get; set; }
     private int index = 1;
@@ -26,23 +26,23 @@ public class LOSManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    public string AddToLOS(Vector2[] los, string tag)
+    public string AddToLOS(List<Vector3> los_tiles, string tag)
     {
         if (LOS.Keys.Contains(tag))
         {
             tag += index;
             index++;
-            LOS.Add(tag, los);
+            LOS.Add(tag, los_tiles);
             return tag;
         }
-        else LOS.Add(tag, los);
+        else LOS.Add(tag, los_tiles);
         return tag;
     }
     public Transform GetPlayerTransform()
     {
         return player.transform;
     }
-    public void UpdateLOS(Vector2[] los, string tag)
+    public void UpdateLOS(List<Vector3> los, string tag)
     {
         LOS[tag] = los;
     }

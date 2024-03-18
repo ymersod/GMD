@@ -7,16 +7,6 @@ using UnityEngine;
 public class Brush_logic : MonoBehaviour
 {
     [SerializeField] private LineRenderer lineRenderer;
-    private bool mapEnabled = false;
-
-    void OnEnable()
-    {
-        mapEnabled = true;
-    }
-    void OnDisable()
-    {
-        mapEnabled = false;
-    }
 
     public void SetPosition(Vector2 position)
     {
