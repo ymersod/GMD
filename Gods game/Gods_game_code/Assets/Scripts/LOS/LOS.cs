@@ -21,6 +21,7 @@ public class LOS : MonoBehaviour
     private int los_radius = 5;
     private readonly float tile_size = 1f;
     public int var = 0;
+    private Vector3Int lastInvalidCorner = Vector3Int.zero;
     
     void OnEnable()
     {
@@ -34,7 +35,7 @@ public class LOS : MonoBehaviour
         {
             SetLOSGrid(centerTile, position, los_radius, tile_size);
             current_center = centerTile;
-            LOSManager.Instance.UpdateLOS(los_tiles, los_tag);
+            LOSManager.Instance.UpdateLOS(los_tiles, position, los_tag);
         }
     }
 
@@ -67,7 +68,7 @@ public class LOS : MonoBehaviour
         var (centerTile, position) = CenterTile(tile_size);
         SetLOSGrid(centerTile, position, los_radius, tile_size);
 
-        los_tag = LOSManager.Instance.AddToLOS(los_tiles, los_tag);
+        los_tag = LOSManager.Instance.AddToLOS(los_tiles, position, los_tag);
         
         var losCheck = GetComponent<LOSCheck>();
         if(losCheck)
@@ -146,13 +147,19 @@ public class LOS : MonoBehaviour
         var totalXdiff = diff.x;
         var totalYdiff = diff.y;
         
-        if(Math.Abs(totalXdiff) - Math.Abs(totalYdiff) >= 2)
+        if(Math.Abs(totalXdiff) - Math.Abs(totalYdiff) >= 2 && IsInvalidCorner(centerTile,no_los_tiles) && totalYdiff != 0)
         {
-            if(IsInvalidCorner(cellPos, no_los_tiles)) return false;
+            if(IsInvalidCorner(cellPos, no_los_tiles))
+            {
+                return IsSnakeCorner(moveX, centerTile, totalXdiff);
+            }
         }
-        else if(Math.Abs(totalYdiff) - Math.Abs(totalXdiff) >= 2)
+        else if(Math.Abs(totalYdiff) - Math.Abs(totalXdiff) >= 2 && IsInvalidCorner(centerTile, no_los_tiles) && totalXdiff != 0)
         {
-            if(IsInvalidCorner(cellPos, no_los_tiles)) return false;
+            if(IsInvalidCorner(cellPos, no_los_tiles))
+            {
+                return IsSnakeCorner(moveY, centerTile, totalYdiff);
+            }
         }
         else if(Math.Abs(totalXdiff) - Math.Abs(totalYdiff) == 0)
         {
@@ -227,11 +234,25 @@ public class LOS : MonoBehaviour
         
         for(int i = 0; i < arr.Length; i++)
         {
-             var current_testing_cell = cellPos;
-            if(no_los_tiles.Contains(current_testing_cell + arr[i]))
+            var current_testing_cell = cellPos;
+            current_testing_cell += arr[i];
+            if(no_los_tiles.Contains(current_testing_cell))
             {
+                lastInvalidCorner = current_testing_cell;
                 return true;
             }
+        }
+        return false;
+    }
+
+    private bool IsSnakeCorner(Vector3Int move, Vector3Int center, float moves)
+    {
+        var current = lastInvalidCorner;
+        for(int i = 0; i < moves; i++)
+        {
+            current += move;
+            if(no_los_tiles.Contains(current)) return false;
+            if(current == center) return true;
         }
         return false;
     }

@@ -7,13 +7,17 @@ using UnityEngine.Tilemaps;
 
 public class DrawLOS : MonoBehaviour
 {
-    [SerializeField] private Transform char_position;
     [SerializeField] private float radius = .2f;
     [SerializeField] private int los_radius = 5;
     [SerializeField] private Tilemap world_tilemap;
     [SerializeField] private Color los_color = Color.red;
     [SerializeField] private Color no_los_color = Color.blue;
     [SerializeField] private int corner_LOS_size = 2;
+    private Vector3Int lastInvalidCorner = Vector3Int.zero;
+    public List<Vector3> los_tiles;
+    public List<Vector3Int> no_los_tiles;
+    public Vector3Int center;
+    [SerializeField] private int diagonalRule = 2;
 
     void OnDrawGizmos()
     {
@@ -21,6 +25,7 @@ public class DrawLOS : MonoBehaviour
         {
             Vector3 playerPosition = transform.position;
             Vector3Int cellPosition = world_tilemap.WorldToCell(playerPosition);
+            center = cellPosition;
 
             var tile_size = 1f;
             Vector3 center_tile = new(cellPosition.x + tile_size / 2, cellPosition.y + tile_size / 2, 0);
@@ -30,9 +35,13 @@ public class DrawLOS : MonoBehaviour
     }
     void DrawLineOfSight(Vector3 position, Vector3Int centerTile, float radius, int los_radius, float tile_size)
     {
-        List<Vector3Int> no_los_tiles = new();
+        los_tiles = new();
+        no_los_tiles = new();
+
+
         Gizmos.color = los_color;
         Gizmos.DrawSphere(position, radius);
+        los_tiles.Add(world_tilemap.WorldToCell(position));
         var lastOrigin = position;
         for(int i = 1; i <= los_radius; i++)
         {
@@ -71,6 +80,7 @@ public class DrawLOS : MonoBehaviour
         {
             if(CanRoute(centerTile, cellPos, no_los_tiles))
             {
+                los_tiles.Add(cellPos);
                 Gizmos.color = los_color;
                 Gizmos.DrawSphere(currentpos, radius);
                 return;
@@ -102,18 +112,30 @@ public class DrawLOS : MonoBehaviour
 
         var totalXdiff = diff.x;
         var totalYdiff = diff.y;
-        
-        if(Math.Abs(totalXdiff) - Math.Abs(totalYdiff) >= corner_LOS_size)
+
+        if(cellPos.x == -5 && cellPos.y == -3)
         {
-            if(IsInvalidCorner(cellPos, no_los_tiles)) return false;
+            print("here");
         }
-        else if(Math.Abs(totalYdiff) - Math.Abs(totalXdiff) >= corner_LOS_size)
+        if(Math.Abs(totalXdiff) - Math.Abs(totalYdiff) >= corner_LOS_size && totalYdiff != 0)
         {
-            if(IsInvalidCorner(cellPos, no_los_tiles)) return false;
+            if(IsInvalidCorner(cellPos, no_los_tiles))
+            {
+                if(CanDoDiagonal(cellPos, centerTile, totalXdiff, moveX, moveY, true, no_los_tiles, totalYdiff)) return true;
+                else return IsSnakeCorner(moveY, centerTile, totalYdiff);
+            }
+        }
+        else if(Math.Abs(totalYdiff) - Math.Abs(totalXdiff) >= corner_LOS_size && totalXdiff != 0)
+        {
+            if(IsInvalidCorner(cellPos, no_los_tiles))
+            {
+                if(CanDoDiagonal(cellPos, centerTile, totalYdiff, moveX, moveY, false, no_los_tiles, totalXdiff)) return true;
+                else return IsSnakeCorner(moveY, centerTile, totalYdiff);
+            }
         }
         else if(Math.Abs(totalXdiff) - Math.Abs(totalYdiff) == 0)
         {
-            if(IsInvalidDiagonal(cellPos, no_los_tiles, centerTile, moveX, moveY, totalXdiff)) return false;
+            if(IsInvalidDiagonal(cellPos, no_los_tiles, moveX, moveY, Math.Abs(totalXdiff))) return false;
         }
 
         var currentPos = cellPos;
@@ -162,7 +184,29 @@ public class DrawLOS : MonoBehaviour
         return false;
     }
 
-    private bool IsInvalidDiagonal(Vector3Int cellPos, List<Vector3Int> no_los_tiles, Vector3Int centerTile, Vector3Int moveX, Vector3Int moveY, float distance)
+    private bool CanDoDiagonal(Vector3Int cellPos, Vector3Int centerTile, float cardinalDiff, Vector3Int moveX, Vector3Int moveY, bool isHorizontal, List<Vector3Int> no_los_tiles, float diagonalMoves)
+    {
+        var cardinalDiffCalc = Math.Abs(cardinalDiff) <= 2 ? cardinalDiff : 2;
+        var direction = isHorizontal ? moveX : moveY;  
+        var current_testing_cell = cellPos;
+        
+        for(int i = 0; i < cardinalDiffCalc; i++)
+        {
+            current_testing_cell += direction;
+            if(no_los_tiles.Contains(current_testing_cell)) return false;	
+        }   
+        for(int i = 0; i < Math.Abs(diagonalMoves); i++)
+        {
+            current_testing_cell += moveX;
+            current_testing_cell += moveY;
+            if(no_los_tiles.Contains(current_testing_cell)) return false;
+            if(current_testing_cell == centerTile) return true;
+        }
+        return false;
+       
+    }
+
+    private bool IsInvalidDiagonal(Vector3Int cellPos, List<Vector3Int> no_los_tiles, Vector3Int moveX, Vector3Int moveY, float distance)
     {
         var current_testing_cell = cellPos;
         for(int i = 0; i < distance; i++)
@@ -185,11 +229,24 @@ public class DrawLOS : MonoBehaviour
         
         for(int i = 0; i < arr.Length; i++)
         {
-             var current_testing_cell = cellPos;
-            if(no_los_tiles.Contains(current_testing_cell + arr[i]))
+            var current_testing_cell = cellPos;
+            current_testing_cell += arr[i];
+            if(no_los_tiles.Contains(current_testing_cell))
             {
+                lastInvalidCorner = current_testing_cell;
                 return true;
             }
+        }
+        return false;
+    }
+    private bool IsSnakeCorner(Vector3Int move, Vector3Int center, float moves)
+    {
+        var current = lastInvalidCorner;
+        for(int i = 0; i < moves; i++)
+        {
+            current += move;
+            if(no_los_tiles.Contains(current)) return false;
+            if(current == center) return true;
         }
         return false;
     }

@@ -17,7 +17,9 @@ public class enemy_move : MonoBehaviour
     private Animator enemy_anim;
     private Transform player_transform = null;
     private LOSCheck LOSCheck;
+    private EnemyCombatStatusEnum status = EnemyCombatStatusEnum.Idle;
     public event System.Action<Vector2, Vector2> AttackMode;
+    private Vector3 lastKnownPlayerPos;
 
     void Start()
     {
@@ -35,15 +37,41 @@ public class enemy_move : MonoBehaviour
     {   
         if(LOSCheck)
         {
-            if(LOSCheck.IsInLOS()){
+            var (IsInLOS, targetPos) = LOSCheck.IsInLOS();
+            if(IsInLOS){
+                StopCoroutine(Pursuit());
+                lastKnownPlayerPos = targetPos;
+                status = EnemyCombatStatusEnum.Combat;
+
                 if(player_transform == null) player_transform = LOSManager.Instance.GetPlayerTransform();
+
                 AttackModeMove(transform.position, player_transform.position);
             }
-            else Move();
+            else if(status == EnemyCombatStatusEnum.Combat)
+            {
+                if(LOSCheck.ShouldPursuit()) StartCoroutine(Pursuit());
+            }
+            else status = EnemyCombatStatusEnum.Idle;
         }
-        else Move();
+        if(status == EnemyCombatStatusEnum.Idle) Move();
     }
 
+    IEnumerator Pursuit()
+    {
+        var playerPos = lastKnownPlayerPos;
+        status = EnemyCombatStatusEnum.Pursuit;
+        enemy_anim.SetBool("IsWalking", true);
+
+        var target = playerPos;
+        var route = LOSCheck.Pursuit();
+        while(Vector2.Distance(transform.position, target) != 0)
+        {
+            
+            yield return new WaitForFixedUpdate();
+        }
+        status = EnemyCombatStatusEnum.Combat;
+        enemy_anim.SetBool("IsWalking", false);
+    }
     private void AttackModeMove(Vector2 self, Vector2 player)
     {
         AttackMode?.Invoke(self, player);
@@ -52,7 +80,6 @@ public class enemy_move : MonoBehaviour
 
     void ChooseMoveDirection()
     {
-        // Choose whether player move sideways or up/down
         currentMoveDirection = Mathf.FloorToInt(Random.Range(0, moveDirections.Length));
     }
 
