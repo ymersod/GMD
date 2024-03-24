@@ -305,5 +305,5 @@ MonoBehaviour:
   world_tilemap: {fileID: 0}
   los_tag: Player
   target_tag: Piggy
-  los_radius: 4
+  los_radius: 6
   var: 0

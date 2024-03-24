@@ -13,12 +13,11 @@ public class DrawLOS : MonoBehaviour
     [SerializeField] private Color los_color = Color.red;
     [SerializeField] private Color no_los_color = Color.blue;
     [SerializeField] private int corner_LOS_size = 2;
+    [SerializeField] private DrawPathingLOS pathingLOS;
     private Vector3Int lastInvalidCorner = Vector3Int.zero;
     public List<Vector3> los_tiles;
     public List<Vector3Int> no_los_tiles;
     public Vector3Int center;
-    [SerializeField] private int diagonalRule = 2;
-
     void OnDrawGizmos()
     {
         if(world_tilemap != null)
@@ -30,6 +29,10 @@ public class DrawLOS : MonoBehaviour
             var tile_size = 1f;
             Vector3 center_tile = new(cellPosition.x + tile_size / 2, cellPosition.y + tile_size / 2, 0);
             DrawLineOfSight(center_tile, cellPosition, radius, los_radius, tile_size);
+        }
+        if(pathingLOS != null)
+        {
+            pathingLOS.Setup(los_tiles, center);
         }
 
     }
@@ -113,10 +116,10 @@ public class DrawLOS : MonoBehaviour
         var totalXdiff = diff.x;
         var totalYdiff = diff.y;
 
-        if(cellPos.x == -5 && cellPos.y == -3)
+      /*   if(cellPos.x == -5 && cellPos.y == -3)
         {
             print("here");
-        }
+        } */
         if(Math.Abs(totalXdiff) - Math.Abs(totalYdiff) >= corner_LOS_size && totalYdiff != 0)
         {
             if(IsInvalidCorner(cellPos, no_los_tiles))

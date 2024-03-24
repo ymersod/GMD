@@ -9,6 +9,7 @@ public class initWorld : MonoBehaviour
     private static initWorld Instance;
     [SerializeField] private GameObject EnemySpawner_prefab;
     [SerializeField] private GameObject LOSManager_prefab;
+    [SerializeField] private GameObject WorldGenerator_prefab;
     [SerializeField] private GameObject GridMap_prefab;
 
     void Awake()
@@ -25,9 +26,10 @@ public class initWorld : MonoBehaviour
     private void Initialize()
     {
         Instantiate(LOSManager_prefab);
-
-        var grid = Instantiate(GridMap_prefab);
-        LOSManager.Instance.ground_tilemap = grid.transform.GetChild(0).GetComponent<Tilemap>();
+        Instantiate(WorldGenerator_prefab);
+        var world = GenerateWorld.Instance.GenerateWorlds();
+        
+        LOSManager.Instance.ground_tilemap = world.transform.GetChild(0).GetComponent<Tilemap>();
 
         Instantiate(EnemySpawner_prefab);
         

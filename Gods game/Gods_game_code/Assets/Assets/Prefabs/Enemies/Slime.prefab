@@ -5037,7 +5037,8 @@ MonoBehaviour:
   world_tilemap: {fileID: 0}
   los_tag: Slime
   target_tag: Player
-  los_radius: 4
+  los_radius: 6
+  var: 0
 --- !u!114 &5073466884988381394
 MonoBehaviour:
   m_ObjectHideFlags: 0

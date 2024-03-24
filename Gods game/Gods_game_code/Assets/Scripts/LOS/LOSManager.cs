@@ -52,7 +52,7 @@ public class LOSManager : MonoBehaviour
         LOS[tag] = los;
         Center[tag] = center;
     }
-    public (bool isInLOS, Vector3 targetPos) IsInLOS(string char_tag, string target_tag)
+    public (bool IsInLOS, Vector3 playerPos) IsInLOS(string char_tag, string target_tag)
     {
         
         var char_los = LOS[char_tag];
@@ -62,39 +62,6 @@ public class LOSManager : MonoBehaviour
             return (true, target_center);
         }
         return (false, target_center);
-    }
-
-    public Vector3[] Pursuit(string char_tag, string target_tag, Vector3 self_pos)
-    {
-        var char_los = LOS[char_tag];
-        var target_los = LOS[target_tag];
-        var target = Center[target_tag];
-        Vector3Int cellPosition = ground_tilemap.WorldToCell(self_pos);
-        
-        var diff = target - cellPosition;
-        var moveX = diff.x switch
-        {
-            > 0 => Vector3Int.right,
-            < 0 => Vector3Int.left,
-            _ => Vector3Int.zero
-        };
-        
-        var moveY = diff.y switch
-        {
-            > 0 => Vector3Int.up,
-            < 0 => Vector3Int.down,
-            _ => Vector3Int.zero
-        };
-
-        var totalXdiff = diff.x;
-        var totalYdiff = diff.y;
-
-        for(int i = 0; i <= Math.Abs(diff.x) + Math.Abs(diff.y); i++)
-        {
-
-        }
-
-        return null;
     }
 
     public bool ShouldPursuit(string char_tag, string target_tag)
@@ -115,5 +82,123 @@ public class LOSManager : MonoBehaviour
             }
         }
         return true;
+    }
+
+    public List<Vector3Int> Pursuit(string char_tag, Vector3 target_center)
+    {
+        var path = new List<Vector3Int>();
+
+        var char_los = LOS[char_tag];
+        var self_center = Center[char_tag];
+
+        var diff = target_center - self_center;
+        var moveX = diff.x switch
+        {
+            > 0 => Vector3Int.right,
+            < 0 => Vector3Int.left,
+            _ => Vector3Int.zero
+        };
+        
+        var moveY = diff.y switch
+        {
+            > 0 => Vector3Int.up,
+            < 0 => Vector3Int.down,
+            _ => Vector3Int.zero
+        };
+
+        var totalXdiff = Math.Abs(diff.x);
+        var totalYdiff = Math.Abs(diff.y);
+        
+        var horizontalPriority = totalXdiff >= totalYdiff;
+        path = CanPath(totalXdiff, totalYdiff, moveX, moveY, horizontalPriority, self_center, target_center, char_los, path);
+        if(path.Count == 0)
+        {
+            path = CanPath(totalXdiff, totalYdiff, moveY, moveX, !horizontalPriority, self_center, target_center, char_los, path);
+        }
+        return path;
+    }
+
+    private List<Vector3Int> CanPath(float totalXdiff, float totalYdiff, Vector3Int moveX, Vector3Int moveY, bool horizontalPriority, Vector3 self_center, Vector3 target_center, List<Vector3> self_los_tiles, List<Vector3Int> path)
+    {
+        var currentPos = self_center;
+        var lastPos = currentPos;
+        var currentDirection = PathingDirectionEnum.Zero;
+        var shouldSave = false;
+        
+        var localTotalX = totalXdiff;
+        var localTotalY = totalYdiff;
+        for(int i = 0; i <= totalXdiff + totalYdiff; i++)
+        {
+            var moveChosen = false;
+            if (shouldSave)
+            {
+                path.Add(Vector3Int.FloorToInt(lastPos));
+                shouldSave = false;
+            }
+            if(localTotalX >= 1 && localTotalY >= 1)
+            {
+                if(self_los_tiles.Contains(currentPos + moveX) && self_los_tiles.Contains(currentPos + moveY) && self_los_tiles.Contains(currentPos + moveX + moveY))
+                {
+                    lastPos = currentPos;
+                    currentPos += moveX + moveY;
+                    localTotalX--;
+                    localTotalY--;
+                    i++;
+                    
+                    if(currentDirection != PathingDirectionEnum.Diagonal) shouldSave = true;
+                    currentDirection = PathingDirectionEnum.Diagonal;
+                    moveChosen = true;
+                }
+            }
+            if(moveChosen == false)
+            {
+                if(horizontalPriority)
+                {
+                    if(localTotalX >= 1 && self_los_tiles.Contains(currentPos + moveX))
+                    {
+                        lastPos = currentPos;
+                        currentPos += moveX;
+                        localTotalX--;
+                        if(currentDirection != PathingDirectionEnum.Horizontal) shouldSave = true;
+                        currentDirection = PathingDirectionEnum.Horizontal;
+                    }
+                else if(localTotalY >= 1 && self_los_tiles.Contains(currentPos + moveY))
+                    {
+                        lastPos = currentPos;
+                        currentPos += moveY;
+                        localTotalY--;
+                        if(currentDirection != PathingDirectionEnum.Vertical) shouldSave = true;
+                        currentDirection = PathingDirectionEnum.Vertical;
+                    }
+                }
+                else
+                {
+                    if(localTotalY >= 1 && self_los_tiles.Contains(currentPos + moveY))
+                    {
+                        lastPos = currentPos;
+                        currentPos += moveY;
+                        localTotalY--;
+                        if(currentDirection != PathingDirectionEnum.Vertical) shouldSave = true;
+                        currentDirection = PathingDirectionEnum.Vertical;
+                    }
+                    else if(localTotalX >= 1 && self_los_tiles.Contains(currentPos + moveX))
+                    {
+                        lastPos = currentPos;
+                        currentPos += moveX;
+                        localTotalX--;
+                        if(currentDirection != PathingDirectionEnum.Horizontal) shouldSave = true;
+                        currentDirection = PathingDirectionEnum.Horizontal;
+                    }
+                }
+            }
+        
+        }
+        if(currentPos == target_center)
+        {
+            path.Add(Vector3Int.FloorToInt(currentPos));
+            return path;
+        }
+        path = new();
+        return path;
     }
 }

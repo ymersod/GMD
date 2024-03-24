@@ -8,7 +8,7 @@ public class LOSCheck : MonoBehaviour
     public string los_tag { get; set; }
     public string target_tag { get; set; }
 
-    public (bool IsInLOS, Vector3 targetPos) IsInLOS()
+    public (bool isInLOS, Vector3 playerPos) IsInLOS()
     {
         return LOSManager.Instance.IsInLOS(los_tag, target_tag);
     }
@@ -18,8 +18,8 @@ public class LOSCheck : MonoBehaviour
         return LOSManager.Instance.ShouldPursuit(los_tag, target_tag);
     }
 
-    public Vector3[] Pursuit()
+    public List<Vector3Int> Pursuit(Vector3 targetPos)
     {
-        return LOSManager.Instance.Pursuit(los_tag, target_tag, transform.position);
+        return LOSManager.Instance.Pursuit(los_tag, targetPos);
     }
 }
