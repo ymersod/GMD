@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 5447148387019963838}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   height: 0.2
-  weapon_prefab: {fileID: 0}
+  weapon_prefab: {fileID: 7833688469647639206}
 --- !u!114 &1845616502171480326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 5512721216263542543}
   m_Layer: 0
   m_Name: SlimeBall
-  m_TagString: Untagged
+  m_TagString: bag_use_item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

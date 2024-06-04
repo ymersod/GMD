@@ -24,8 +24,11 @@ public class Ui_image_controller : MonoBehaviour
         var playerInput = GetComponent<PlayerInput>();
         Events.instance.Map += () => HandleUIEnabling("map_placeholder");
         Events.instance.Inventory += () => HandleUIEnabling("inventory_image");
+        UIEvents.instance.Click += () => BagClick();
+        
         map = Instantiate(map);
         map_renderer = map.GetComponent<SpriteRenderer>();
+
 
         currentUI = OpenUIEnum.Bag;
 
@@ -33,6 +36,8 @@ public class Ui_image_controller : MonoBehaviour
         ui_actions = actionMap.FindAction("Click");
         
         //TODO: use for other actions later
+        // Drawing doesnt work atm - dunno what made it stop working :( will fix later :)
+        // Trying new approach with the UIEvents
         ui_actions.started += context => { 
             if(currentUI == OpenUIEnum.Map)
             {
@@ -57,18 +62,18 @@ public class Ui_image_controller : MonoBehaviour
 
     void BagClick()
     {
+        print("bag click");
         //For every result returned, output the name of the GameObject on the Canvas hit by the Ray
         foreach (RaycastResult result in UiRayCast())
         {
-            if(result.gameObject.CompareTag("bag_item"))
+            if(result.gameObject.CompareTag("bag_item") || result.gameObject.CompareTag("bag_use_item"))
             {
-                result.gameObject.transform.GetChild(0).GetComponent<inventory_element>().Equip();
+                result.gameObject.transform.GetChild(0).GetComponent<inventory_element>().Click(result.gameObject.tag);
             }
         }
     }
     private List<RaycastResult> UiRayCast()
     {
-            //Set the Pointer Event Position to that of the mouse position
             m_PointerEventData.position = Input.mousePosition;
 
             //Create a list of Raycast Results

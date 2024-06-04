@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -56,6 +57,15 @@ public class PlayerStatus : MonoBehaviour
         if(current_health <= 0)
         {
             player_anim.SetTrigger("Death");
+        }
+    }
+
+    internal void Heal(int hp)
+    {
+        current_health += hp;
+        if(current_health > max_health)
+        {
+            current_health = max_health;
         }
     }
 }

@@ -19,15 +19,6 @@ public class player_attack : MonoBehaviour
     private Vector2 lastMoveInput;
     private Vector2 lastAttackDirection;
     float timeUntilMeele;
-    void Start()
-    {
-        //move_script = gameObject.GetComponent<movement>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
 
     void OnFire(InputValue value)
     {

@@ -322,11 +322,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf91bbd08252796428935b372657c7cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  char_position: {fileID: 4399960778206746419}
   radius: 0.2
   los_radius: 7
   world_tilemap: {fileID: 0}
-  color: {r: 0.9427508, g: 1, b: 0, a: 1}
+  los_color: {r: 1, g: 0, b: 0, a: 1}
+  no_los_color: {r: 0, g: 0, b: 1, a: 1}
+  corner_LOS_size: 2
+  pathingLOS: {fileID: 0}
+  los_tiles: []
+  no_los_tiles: []
+  center: {x: 0, y: 0, z: 0}
 --- !u!114 &1050114186044964660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,6 +348,7 @@ MonoBehaviour:
   los_tag: Piggy
   target_tag: Player
   los_radius: 7
+  var: 0
 --- !u!114 &3876497741386952808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5114,9 +5120,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57a464715b389b94f8a09621e8e66d2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drop_weight: 00000000
+  drop_weight: 08000000
   drop_items:
-  - {fileID: 3115338670939256917, guid: ce4f2c963a06b56468086a30c2225900, type: 3}
+  - {fileID: 1183372043853531917, guid: 25ef01cf8b64f304aaa8bea117b70201, type: 3}
 --- !u!1 &6513857181352542491
 GameObject:
   m_ObjectHideFlags: 0

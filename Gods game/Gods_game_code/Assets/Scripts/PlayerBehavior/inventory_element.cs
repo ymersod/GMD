@@ -6,8 +6,18 @@ using UnityEngine.InputSystem;
 public class inventory_element : MonoBehaviour
 {
     public GameObject item_object { get; set; }
-    public void Equip()
+    public void Click(string tag)
     {
-        InventoryManager.instance.EquipItem(item_object, gameObject);
+        switch(tag)
+        {
+            case "bag_use_item":
+                    InventoryManager.instance.UseItem(item_object, gameObject);
+                break;
+            case "bag_item":
+                    InventoryManager.instance.EquipItem(item_object, gameObject);
+                break;
+            default:
+                break;
+        }
     }
 }

@@ -19,7 +19,7 @@ public class RollForLoot : MonoBehaviour
     }
     public IEnumerator DropLoot(Transform enemyTransform, List<(int weight, GameObject item)> drops)
     {
-        var random = Random.Range(0, 11);
+        var random = Random.Range(0, 11); //0 - 10
         foreach (var (weight, item) in drops)
         {
             if  (random >= weight)

@@ -170,6 +170,7 @@ MonoBehaviour:
   player_prefab: {fileID: 926073264052477581, guid: f7adb509846113d488475fd0664fceb3, type: 3}
   starterWeap_prefab: {fileID: 8300969867325413930, guid: bacfff18b1168374e874744e0d63f761, type: 3}
   eventManager: {fileID: 8311667272372627509, guid: 2b7b4ee9edb064443a99090576d89534, type: 3}
+  uiEventManager: {fileID: 6051618431469599721, guid: bf85a1305bbe08343a1ee1a80e83d105, type: 3}
   inventoryManager: {fileID: 6274641517510220351, guid: 9fa290a9d8266db49a3758fff71ef93f, type: 3}
   BaseMap: {fileID: 2027055703741892357, guid: 64d86f02875b8994ab4fc155b90e04fa, type: 3}
   SceneManager: {fileID: 4713924325346275880, guid: 65d945d422dbcf249ac2cd0503e2267f, type: 3}
@@ -201,7 +202,7 @@ Transform:
   m_GameObject: {fileID: 184409950}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.03, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3466,74 +3467,6 @@ Transform:
   - {fileID: 242239110}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1405789382
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1405789385}
-  - component: {fileID: 1405789384}
-  - component: {fileID: 1405789383}
-  m_Layer: 0
-  m_Name: EventSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1405789383
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1405789382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
---- !u!114 &1405789384
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1405789382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
---- !u!4 &1405789385
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1405789382}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2118534950
 GameObject:
   m_ObjectHideFlags: 0
@@ -3595,7 +3528,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.8686557
+  orthographic size: 5.234485
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3620,7 +3553,7 @@ Transform:
   m_GameObject: {fileID: 2118534950}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.04, y: 0.1, z: -10}
+  m_LocalPosition: {x: 0.04, y: 0.03, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3634,4 +3567,3 @@ SceneRoots:
   - {fileID: 1351459750}
   - {fileID: 102238905}
   - {fileID: 841445283}
-  - {fileID: 1405789385}

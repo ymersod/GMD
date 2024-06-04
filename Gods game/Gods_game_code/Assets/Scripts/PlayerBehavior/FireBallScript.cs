@@ -22,5 +22,6 @@ public class FireBallScript : MonoBehaviour
             Destroy(gameObject.transform.parent.gameObject);
             collision.gameObject.GetComponent<Enemy>().TakeDamage(dmg, knockback, direction);
         }
+        Destroy(gameObject.transform.parent.gameObject);
     }
 }   

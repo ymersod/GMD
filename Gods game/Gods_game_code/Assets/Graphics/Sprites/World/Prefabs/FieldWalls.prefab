@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 819805337004375530}
   m_Layer: 0
   m_Name: FieldWalls
-  m_TagString: Untagged
+  m_TagString: EnemySpawnArea
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3786,9 +3786,13 @@ Tilemap:
   m_TileAssetArray:
   - m_RefCount: 374
     m_Data: {fileID: 11400000, guid: 426698d25f7d8fe4093d8ef4a24b48b6, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileSpriteArray:
   - m_RefCount: 374
     m_Data: {fileID: -1454226072, guid: a663e45422333334fad5c84852808ed3, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileMatrixArray:
   - m_RefCount: 374
     m_Data:
@@ -3808,6 +3812,24 @@ Tilemap:
       e31: 0
       e32: 0
       e33: 1
+  - m_RefCount: 0
+    m_Data:
+      e00: 3.9030567e-36
+      e01: 0
+      e02: -2.0328811e-19
+      e03: -2.0328811e-19
+      e10: 0
+      e11: 0
+      e12: 7.7e-43
+      e13: 7.7e-43
+      e20: 4.48724e+15
+      e21: -63.534546
+      e22: 1.6241038e-18
+      e23: 1.157742e-39
+      e30: 4.5905e-41
+      e31: 7.74e-43
+      e32: 7.71e-43
+      e33: 7.74e-43
   m_TileColorArray:
   - m_RefCount: 374
     m_Data: {r: 1, g: 1, b: 1, a: 1}
@@ -3873,8 +3895,8 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 806205245
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}

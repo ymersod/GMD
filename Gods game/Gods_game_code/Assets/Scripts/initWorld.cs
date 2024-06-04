@@ -11,6 +11,7 @@ public class initWorld : MonoBehaviour
     [SerializeField] private GameObject LOSManager_prefab;
     [SerializeField] private GameObject WorldGenerator_prefab;
     [SerializeField] private GameObject GridMap_prefab;
+    [SerializeField] private GameObject Portal;
 
     void Awake()
     {
@@ -27,15 +28,22 @@ public class initWorld : MonoBehaviour
     {
         Instantiate(LOSManager_prefab);
         Instantiate(WorldGenerator_prefab);
-        var world = GenerateWorld.Instance.GenerateWorlds();
-        
-        LOSManager.Instance.ground_tilemap = world.transform.GetChild(0).GetComponent<Tilemap>();
+
+        GenerateWorld.instance.CreateWorld();
+        LOSManager.Instance.ground_tilemap = GetTileMap(GenerateWorld.instance.ground_name);
+
+        var portal = Instantiate(Portal);
+        portal.transform.position = GetTileMap(GenerateWorld.instance.spawn_name).cellBounds.center;
 
         Instantiate(EnemySpawner_prefab);
-        
+   
         //SMTH can be done about this initializer
         var player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponent<PlayerStatus>().enabled = true;
         player.GetComponent<LOS>().enabled = true;
+        
     }
+
+    private Tilemap GetTileMap(string name) => GameObject.Find(name).GetComponent<Tilemap>();
+    
 }

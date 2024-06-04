@@ -6,7 +6,7 @@ using UnityEngine;
 public class Portal : MonoBehaviour
 {
     private bool in_range = false;
-    [SerializeField] private int scene;
+    public int scene_number;
 
     void OnEnable()
     {
@@ -15,7 +15,7 @@ public class Portal : MonoBehaviour
 
     void Activate()
     {
-        if(in_range) Scene_manager.instance.LoadScene(scene);
+        if(in_range) Scene_manager.instance.LoadScene(scene_number);
     }
 
     void OnTriggerEnter2D(Collider2D other)

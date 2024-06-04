@@ -33,5 +33,5 @@ public class Events : MonoBehaviour
     
 
     void OnMap() => Map?.Invoke();
-    
+
 }

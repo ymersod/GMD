@@ -5083,7 +5083,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57a464715b389b94f8a09621e8e66d2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drop_weight: 000000000a000000
+  drop_weight: 0500000008000000
   drop_items:
   - {fileID: 7833688469647639206, guid: b56f6ea8adfab584b92ebcd35e781aff, type: 3}
   - {fileID: 3115338670939256917, guid: ce4f2c963a06b56468086a30c2225900, type: 3}

@@ -535,7 +535,7 @@ MonoBehaviour:
   alt_dmg: 10
   alt_knockback: 10
   alt_size: 2
-  fireball: {fileID: 0}
+  fireball: {fileID: 2262493719507991182, guid: a728a325c9037b34c9d8a60527335a15, type: 3}
 --- !u!114 &2759787289589788302
 MonoBehaviour:
   m_ObjectHideFlags: 0

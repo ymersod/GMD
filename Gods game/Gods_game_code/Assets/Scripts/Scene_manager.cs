@@ -30,6 +30,15 @@ public class Scene_manager : MonoBehaviour
     }
     public void LoadScene(int scene)
     {
+        if(scene == 0)
+        {
+            GameObject[] allObjects = FindObjectsOfType<GameObject>();
+       
+            foreach (GameObject go in allObjects)
+            {
+                Destroy(go);
+            }
+        }
         UnityEngine.SceneManagement.SceneManager.LoadScene(scene);
     }
 

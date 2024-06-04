@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1014835604894656125}
   m_Layer: 0
   m_Name: Sun
-  m_TagString: Untagged
+  m_TagString: EnemySpawnArea
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40018,6 +40018,8 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: fc5236b95795c3446aac5a4d34f1ff95, type: 2}
   - m_RefCount: 311
     m_Data: {fileID: 11400000, guid: 7a5d16d0388457d4b8fcab68d8a9b067, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileSpriteArray:
   - m_RefCount: 337
     m_Data: {fileID: 470412886, guid: a663e45422333334fad5c84852808ed3, type: 3}
@@ -40063,6 +40065,8 @@ Tilemap:
     m_Data: {fileID: 898685202, guid: a663e45422333334fad5c84852808ed3, type: 3}
   - m_RefCount: 311
     m_Data: {fileID: 1596666262, guid: a663e45422333334fad5c84852808ed3, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileMatrixArray:
   - m_RefCount: 3993
     m_Data:
@@ -40082,6 +40086,24 @@ Tilemap:
       e31: 0
       e32: 0
       e33: 1
+  - m_RefCount: 0
+    m_Data:
+      e00: 0
+      e01: 0
+      e02: -2.0328811e-19
+      e03: -2.0328811e-19
+      e10: 0
+      e11: 0
+      e12: 7.7e-43
+      e13: 7.7e-43
+      e20: 4.48724e+15
+      e21: -3.0642894e-29
+      e22: 1.6607578e-18
+      e23: 6.78845e-39
+      e30: 4.5905e-41
+      e31: 7.74e-43
+      e32: 7.71e-43
+      e33: 7.74e-43
   m_TileColorArray:
   - m_RefCount: 3993
     m_Data: {r: 1, g: 1, b: 1, a: 1}
@@ -40147,8 +40169,8 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 806205245
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}

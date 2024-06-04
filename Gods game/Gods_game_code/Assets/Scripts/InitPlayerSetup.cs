@@ -8,6 +8,7 @@ public class InitPlayerSetup : MonoBehaviour
     [SerializeField] private GameObject player_prefab;
     [SerializeField] private GameObject starterWeap_prefab;
     [SerializeField] private GameObject eventManager;
+    [SerializeField] private GameObject uiEventManager;
     [SerializeField] private GameObject inventoryManager;
     [SerializeField] private GameObject BaseMap;
     [SerializeField] private GameObject SceneManager;
@@ -33,6 +34,7 @@ public class InitPlayerSetup : MonoBehaviour
     {
         //Managers
         Instantiate(eventManager);
+        Instantiate(uiEventManager);
         Instantiate(inventoryManager);
         Instantiate(SceneManager);
         Instantiate(mapManager);
@@ -51,5 +53,6 @@ public class InitPlayerSetup : MonoBehaviour
 
         DontDestroyOnLoad(transform.gameObject);
     }
+
 
 }

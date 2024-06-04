@@ -45,5 +45,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   world_segments:
-  - {fileID: 2915166659781093662, guid: b12ff20d89fea2241b95477479036a37, type: 3}
-  - {fileID: 6473550158100060747, guid: 1a70c6d3355aa1b4086ccb5ec0b93bf1, type: 3}
+  - {fileID: 2050767472024494108, guid: ae9c439f816fb7a479e2a2c7546d3a27, type: 3}
+  - {fileID: 3851617863253865787, guid: 8c0b8f91469aa684ab8a1c74aa1aef05, type: 3}
+  - {fileID: 4651196342579191159, guid: 2b944b563988cb848be2f5da450c357d, type: 3}
+  - {fileID: 8663929795568484403, guid: 7f05e816a0af8ea4786de4d04d515172, type: 3}
+  center: {fileID: 7771797064972028081, guid: d93ac90fec8e1d44dbe93f733cc0d517, type: 3}
+  world_segments_count: 4
+  floor_tile:
+  - {fileID: 11400000, guid: 3f7f0288e88dd694d91f09ed9708a09e, type: 2}
+  - {fileID: 11400000, guid: 724f616fcef72c64a96b18dced65ad44, type: 2}
+  - {fileID: 11400000, guid: 09098947c9eba2d47a0606216985a02c, type: 2}
+  - {fileID: 11400000, guid: 0a04ea006641044419dbfd482443606c, type: 2}
+  - {fileID: 11400000, guid: 4a790419ca13968408a89a91798cc4b7, type: 2}
+  - {fileID: 11400000, guid: eff02ed37c1623c47912785fcca7ee14, type: 2}
+  - {fileID: 11400000, guid: 26b34e6b13e2b7b45890698971472e13, type: 2}
+  wall_tile: {fileID: 11400000, guid: ef481d7bc63701643914b636e8f6d746, type: 2}
+  interactable_prefab: {fileID: 5069170950621628634, guid: 6a136e8dc52d0b844b2137674070e8d5, type: 3}
+  ground_name: 
+  spawn_name: 
+  world_name: 

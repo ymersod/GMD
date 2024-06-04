@@ -79,7 +79,7 @@ public class Spawner : MonoBehaviour
     public IEnumerator SpawnFireBall(Vector2 direction, Vector2 playerPosition, float speed, float size, float dmg, float knockback, GameObject fire_ballPrefal)
     {
         var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        var fireball = Instantiate(fire_ballPrefal, playerPosition, Quaternion.Euler(0, 0, angle));
+        var fireball = Instantiate(fire_ballPrefal, playerPosition + direction, Quaternion.Euler(0, 0, angle));
 
         fireball.transform.localScale = new Vector3(size, size, 1);
 
