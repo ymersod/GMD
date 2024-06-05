@@ -62,6 +62,8 @@ GameObject:
   - component: {fileID: 8488870562037425798}
   - component: {fileID: 5361197903169857535}
   - component: {fileID: 899357036804852138}
+  - component: {fileID: 9110910153955132966}
+  - component: {fileID: 6326808589680149462}
   m_Layer: 0
   m_Name: Body
   m_TagString: Player
@@ -188,9 +190,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
+  m_NeverAutoSwitchControlSchemes: 1
+  m_DefaultControlScheme: Gamepad
+  m_DefaultActionMap: 9e688708-5653-4de9-840e-f87ce9238391
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!95 &1861404244285615598
@@ -307,3 +309,29 @@ MonoBehaviour:
   target_tag: Piggy
   los_radius: 6
   var: 0
+--- !u!114 &9110910153955132966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7466175996538123274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a268fcd8a5c1da449c40ee525e5b350, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+--- !u!114 &6326808589680149462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7466175996538123274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2947785e41c5ebb4182301c9d37e1a10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}

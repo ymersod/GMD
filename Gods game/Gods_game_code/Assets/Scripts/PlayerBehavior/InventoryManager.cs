@@ -12,7 +12,7 @@ public class InventoryManager : MonoBehaviour
     private readonly List<GameObject> equipped_items = new();
     private GameObject inventory_bag_grid;
     private GameObject equipped_weapon_grid;
-    public GameObject player { get; set;}
+    public GameObject player { get; set; }
     private string weapon_bag_tag = "bag_item";
     private string weapon_equipped_tag = "equipped_item";
     private string usable_bag_tag = "bag_use_item";
@@ -26,7 +26,7 @@ public class InventoryManager : MonoBehaviour
         inventory_bag_grid = GameObject.Find("Bag_grid");
         equipped_weapon_grid = GameObject.Find("Equipped_grid");
 
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
         }
@@ -40,11 +40,11 @@ public class InventoryManager : MonoBehaviour
     {
         items.Add(item);
 
-        if(item.CompareTag(usable_bag_tag))
+        if (item.CompareTag(usable_bag_tag))
         {
             InitItemToGrid(item, inventory_bag_grid, item_sprite, usable_bag_tag);
         }
-        else if(item.CompareTag(blessing))
+        else if (item.CompareTag(blessing))
         {
             InitItemToGrid(item, inventory_bag_grid, item_sprite, blessing);
         }
@@ -69,7 +69,7 @@ public class InventoryManager : MonoBehaviour
     {
         var item_to_add = Instantiate(grid_element_prefab, null);
         item_to_add.tag = tag;
-        
+
         var child = item_to_add.transform.GetChild(0);
         child.GetComponent<inventory_element>().item_object = item;
         child.GetComponent<Image>().sprite = item_sprite;
@@ -93,17 +93,42 @@ public class InventoryManager : MonoBehaviour
 
         var player_body = player.transform.GetChild(0);
         Destroy(player_body.GetChild(0).gameObject);
-        
+
         var new_weap = Instantiate(item_object, player_body);
         new_weap.transform.localPosition = Vector3.zero;
     }
 
     public void UseItem(GameObject item_object, GameObject cell)
-    {   
+    {
         player.transform.GetChild(0).GetComponent<PlayerStatus>().Heal(50);
         RemoveItemFromBag(item_object);
         Destroy(cell);
         Destroy(item_object);
+    }
+
+    //TODO: This is not how i want to implement bag, however i dont have time to do inventory navigation on joystick
+    public void AcitvateItem()
+    {
+        var childCount = inventory_bag_grid.transform.childCount;
+
+        for (int i = 0; i < childCount - 1; i++)
+        {
+            var firstItem = inventory_bag_grid.transform.GetChild(i);
+            var equippedItem = equipped_weapon_grid.transform.GetChild(0);
+
+            if (firstItem.gameObject.GetComponent<inventory_element>().item_object.CompareTag(usable_bag_tag))
+            {
+                UseItem(firstItem.gameObject.GetComponent<inventory_element>().item_object, firstItem.gameObject);
+                break;
+            }
+            else if (firstItem.gameObject.GetComponent<inventory_element>().item_object.transform.GetComponentInChildren<player_attack>().dmg >
+                equippedItem.gameObject.GetComponent<inventory_element>().item_object.transform.GetComponentInChildren<player_attack>().dmg
+                && firstItem.gameObject.CompareTag(weapon_bag_tag))
+            {
+                EquipItem(firstItem.gameObject.GetComponent<inventory_element>().item_object, firstItem.gameObject);
+                break;
+            }
+        }
     }
 
     public bool CountBlessings()
@@ -111,14 +136,14 @@ public class InventoryManager : MonoBehaviour
         var count = 0;
         foreach (var item in items)
         {
-            if(item.CompareTag(blessing))
+            if (item.CompareTag(blessing))
             {
                 count++;
             }
         }
         print("Blessings: " + count);
 
-        if(count == 5)
+        if (count == 5)
         {
             return true;
         }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class InitPlayerSetup : MonoBehaviour
-{    
+{
     private static InitPlayerSetup Instance;
     [SerializeField] private GameObject player_prefab;
     [SerializeField] private GameObject starterWeap_prefab;
@@ -32,17 +32,20 @@ public class InitPlayerSetup : MonoBehaviour
 
     void Initialize()
     {
-        //Managers
-        Instantiate(eventManager);
-        Instantiate(uiEventManager);
-        Instantiate(inventoryManager);
-        Instantiate(SceneManager);
-        Instantiate(mapManager);
-
         //Player stuff
         var player = Instantiate(player_prefab);
         var new_weap = Instantiate(starterWeap_prefab, player.transform.GetChild(0).transform);
         new_weap.transform.localPosition = Vector3.zero;
+
+        //Managers - i wanted the eventmanagers to act seperately from the player but this inputsystem is garbage ...
+        //Instantiate(eventManager);
+        //Instantiate(uiEventManager);
+        Instantiate(inventoryManager);
+        Instantiate(SceneManager);
+        Instantiate(mapManager);
+        Events.instance.player = player;
+        UIEvents.instance.player = player;
+
 
         InventoryManager.instance.player = player;
         InventoryManager.instance.InitEquippedItem(new_weap, new_weap.transform.GetComponentInChildren<SpriteRenderer>(true).sprite);
@@ -52,6 +55,7 @@ public class InitPlayerSetup : MonoBehaviour
         Instantiate(BaseMap);
 
         DontDestroyOnLoad(transform.gameObject);
+
     }
 
 

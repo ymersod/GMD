@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,9 +11,9 @@ public class FollowPlayer : MonoBehaviour
     private Transform playerPos;
     private bool isEnabled = false;
     void OnEnable() => isEnabled = true;
-    
+
     void OnDisable() => isEnabled = false;
-    
+
     private void Start()
     {
         original_pos = transform.position;
@@ -22,15 +21,15 @@ public class FollowPlayer : MonoBehaviour
     }
     void Update()
     {
-        if(!isEnabled) return;
+        if (!isEnabled) return;
         TransformToPlayer();
     }
     public void TransformToPlayer()
     {
         prevPos = transform.position;
-        if(SceneManager.GetActiveScene().buildIndex == 2)
+        if (SceneManager.GetActiveScene().buildIndex == 2)
         {
-            if(transform.position != original_pos) UpdateBrushes(original_pos, prevPos);
+            if (transform.position != original_pos) UpdateBrushes(original_pos, prevPos);
             transform.position = original_pos;
             return;
         }

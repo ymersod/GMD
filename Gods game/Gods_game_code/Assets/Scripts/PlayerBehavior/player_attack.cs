@@ -8,7 +8,7 @@ public class player_attack : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private float meeleSpeed;
-    [SerializeField] private float dmg = 50f;
+    [SerializeField] public float dmg = 50f;
     [SerializeField] private float knockback = 10f;
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float alt_speed = 10f;
@@ -34,7 +34,7 @@ public class player_attack : MonoBehaviour
     void OnMove(InputValue value)
     {
         var direction = value.Get<Vector2>();
-        if(direction != Vector2.zero)
+        if (direction != Vector2.zero)
         {
             lastMoveInput = value.Get<Vector2>();
         }
@@ -47,7 +47,7 @@ public class player_attack : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.gameObject.CompareTag("enemy"))
+        if (col.gameObject.CompareTag("enemy"))
         {
             col.gameObject.GetComponent<Enemy>().TakeDamage(dmg, knockback, lastAttackDirection);
         }
