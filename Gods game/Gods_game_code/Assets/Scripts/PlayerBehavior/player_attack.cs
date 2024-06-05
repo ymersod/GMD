@@ -1,12 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class player_attack : MonoBehaviour
 {
     [SerializeField] private Animator animator;
+    [SerializeField] private AudioSource audioSource;
     [SerializeField] private float meeleSpeed;
     [SerializeField] public float dmg = 50f;
     [SerializeField] private float knockback = 10f;
@@ -16,14 +17,28 @@ public class player_attack : MonoBehaviour
     [SerializeField] private float alt_knockback = 10f;
     [SerializeField] private float alt_size = 2f;
     [SerializeField] private GameObject fireball;
+    [SerializeField] private AudioClip fireballSound;
+    [SerializeField] private AudioClip swordSound;
     private Vector2 lastMoveInput;
     private Vector2 lastAttackDirection;
-    float timeUntilMeele;
-
-    void OnFire(InputValue value)
+    private Action<InputValue> moveDelegate;
+    
+    void Start()
     {
+        Events.instance.Fire += OnFire;
+        Events.instance.AltFire += OnAltFire;
+        moveDelegate = (value) => OnMove(value);
+        Events.instance.Move += moveDelegate;
+    }
+
+    void OnFire()
+    {
+        if (gameObject == null || gameObject.Equals(null))
+            return;
         if (!animator.GetCurrentAnimatorStateInfo(0).IsName("attack_sword"))
         {
+            if(audioSource.clip != swordSound ) audioSource.clip = swordSound;
+            audioSource.Play();
             lastAttackDirection = lastMoveInput;
             float angle = Mathf.Atan2(lastMoveInput.y, lastMoveInput.x) * Mathf.Rad2Deg;
             attackPoint.rotation = Quaternion.Euler(0, 0, angle);
@@ -40,8 +55,13 @@ public class player_attack : MonoBehaviour
         }
     }
 
-    void OnAltFire(InputValue value)
+    void OnAltFire()
     {
+        if(audioSource.clip != fireballSound ) audioSource.clip = fireballSound;
+            audioSource.Play();
+
+        if (gameObject == null || gameObject.Equals(null))
+            return;
         StartCoroutine(Spawner.Instance.SpawnFireBall(lastMoveInput, transform.position, alt_speed, alt_size, alt_dmg, alt_knockback, fireball));
     }
 
@@ -52,4 +72,11 @@ public class player_attack : MonoBehaviour
             col.gameObject.GetComponent<Enemy>().TakeDamage(dmg, knockback, lastAttackDirection);
         }
     }
+
+    public void Unsub()
+    {
+        Events.instance.Fire -=  OnFire;
+        Events.instance.AltFire -= OnAltFire;
+        Events.instance.Move -= moveDelegate;
+    } 
 }

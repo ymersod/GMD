@@ -11,7 +11,7 @@ public class DrawPathingLOS : MonoBehaviour{
     public List<Vector3> self_los_tiles;
     public Vector3 target_center;
     [SerializeField] private Color color = Color.red;
-    [SerializeField] private float size = .1f;
+    /* [SerializeField] private float size = .1f; */
     public List<Vector3> path;
 
     internal void Setup(List<Vector3> self_los_tiles, Vector3 self_center)

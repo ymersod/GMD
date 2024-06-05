@@ -16,6 +16,7 @@ public class Spawner : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        DontDestroyOnLoad(gameObject);
    }
 
    public void SpawnQuickCastIndicator(GameObject caller, Vector2 start, Vector2 end, float duration, GameObject prefab, float length, float width)

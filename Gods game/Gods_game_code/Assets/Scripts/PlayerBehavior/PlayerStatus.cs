@@ -37,6 +37,7 @@ public class PlayerStatus : MonoBehaviour
         return current_health / max_health;
     }
 
+    //TODO: Need to cook up a way to make knockback work this way is not working smh
     public IEnumerator TakeDmg(float dmg, float knockback, Vector2 direction)
     {
         player_anim.SetTrigger("IsHit");

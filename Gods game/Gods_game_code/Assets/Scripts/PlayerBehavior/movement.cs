@@ -75,6 +75,8 @@ public class Movement : MonoBehaviour
         is_dashing = false;
         yield return new WaitForSeconds(dash_cooldown);
         can_dash = true;
+
+        
     }
     void OnDash()
     {

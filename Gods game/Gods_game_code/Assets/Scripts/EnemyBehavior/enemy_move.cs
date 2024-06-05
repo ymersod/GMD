@@ -53,12 +53,13 @@ public class enemy_move : MonoBehaviour
             else if(status == EnemyCombatStatusEnum.Combat)
             {
                 if(LOSCheck.ShouldPursuit()) StartCoroutine(Pursuit());
-            }
+            } 
             else status = EnemyCombatStatusEnum.Idle;
         }
         if(status == EnemyCombatStatusEnum.Idle) Move();
     }
 
+    //TODO: This doesnt work properly yet, need to fix
     IEnumerator Pursuit()
     {
         print("pursuit");
@@ -83,12 +84,11 @@ public class enemy_move : MonoBehaviour
                 direction.Normalize();
                 enemy_rb.AddForce(direction * moveSpeed);
                 yield return new WaitForFixedUpdate();
-            
             }
         }
-        print("done");
         status = EnemyCombatStatusEnum.Combat;
         enemy_anim.SetBool("IsWalking", false);
+        print("done");
         yield return null;
     }
     

@@ -13,6 +13,7 @@ public class InitPlayerSetup : MonoBehaviour
     [SerializeField] private GameObject BaseMap;
     [SerializeField] private GameObject SceneManager;
     [SerializeField] private GameObject mapManager;
+    [SerializeField] private GameObject combatSpawner;
 
     //TODO Needs to handle loading at some point
     //TODO Handle player not needing to stay active through scenes
@@ -43,6 +44,7 @@ public class InitPlayerSetup : MonoBehaviour
         Instantiate(inventoryManager);
         Instantiate(SceneManager);
         Instantiate(mapManager);
+        Instantiate(combatSpawner);
         Events.instance.player = player;
         UIEvents.instance.player = player;
 

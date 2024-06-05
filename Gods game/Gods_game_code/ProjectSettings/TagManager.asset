@@ -13,6 +13,7 @@ TagManager:
   - EnemySpawnArea
   - bag_use_item
   - blessing
+  - spawn
   layers:
   - Default
   - TransparentFX

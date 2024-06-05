@@ -5,5 +5,4 @@ using UnityEngine;
 public class DisableDestroyOnLoad : MonoBehaviour
 {
     void Awake() => DontDestroyOnLoad(gameObject);
-    
 }
