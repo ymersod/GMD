@@ -20,5 +20,8 @@ to continue with this exact project after the project is done. But i did make a 
   - _maybe_ rework how classes interact - THINK more about how managers can solve some issues
   - I have a few instances of _sort of duplicated_ code - i think i might be able to make some things more generic to fix this.
 
+
 New focus:
 - Tie up the game with an actual gameplay loop
+
+The game might have combat, however there isnt really a **start**, **end** & **objective** atm, i want to make that :)
