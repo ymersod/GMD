@@ -1,3 +1,20 @@
+Trailer
+-
+
+
+WebGL
+- 
+https://ymersod.github.io/GMD/
+
+Controls:
+- **Move**: Arrow keys / WASD
+- **Attack**: Left Click
+- **AltAttack**: Right Click
+- **Interact**: Space
+- **Map**: M
+- **Inventory**: I
+   - **Use Item**: E
+   - 
 Blogpost links :)
 -
 Blogposts:
