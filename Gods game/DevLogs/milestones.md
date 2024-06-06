@@ -1,7 +1,7 @@
 # Milestones
-+ Minimum gameplay loop
-+ Minimum combat requirements
-+ Make it work on VIA Arcade machine
+1. Minimum combat requirements
+2. Minimum gameplay loop
+3. Make it work on VIA Arcade machine
 
 # Core elements
 + Movement
