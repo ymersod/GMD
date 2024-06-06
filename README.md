@@ -28,3 +28,15 @@ Sources (PLANNED TO USE):
 - https://trevor-pupkin.itch.io/roguelike-dungeon-asset-bundle
 - https://admurin.itch.io/free-monster-pack-character
 
+WebGL
+- 
+https://ymersod.github.io/GMD/
+
+Controls:
+- **Move**: Arrow keys / WASD
+- **Attack**: Left Click
+- **AltAttack**: Right Click
+- **Interact**: Space
+- **Map**: M
+- **Inventory**: I
+   - **Use Item**: E
