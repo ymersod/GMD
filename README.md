@@ -25,7 +25,6 @@ Blogposts:
 - (Devlog2) https://github.com/ymersod/GMD/blob/main/Gods%20game/DevLogs/Devlog2.md
 - (Devlog3) https://github.com/ymersod/GMD/blob/main/Gods%20game/DevLogs/DevLog3.md
 - (Showoff) https://github.com/ymersod/GMD/blob/main/Gods%20game/DevLogs/Showoff.md
-- (Death) https://admurin.itch.io/free-monster-pack-character
 
 Sources
 -
@@ -38,6 +37,7 @@ Sources (USED):
 - (Healthbar) https://adwitr.itch.io/pixel-health-bar-asset-pack-2
 - (Inventory) https://arydian.itch.io/simple-sprite-inventory
 - (Player) https://daviscorsac.itch.io/character-template
+- (Death) https://admurin.itch.io/free-monster-pack-character
 
 - (Sword sound) https://www.youtube.com/watch?v=4bJI-e28kFg&ab_channel=Becomeabetteryou
 - (Fireball sound) https://www.youtube.com/watch?v=FJGdoPmspiU&ab_channel=FreeAudioZone
