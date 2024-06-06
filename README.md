@@ -1,8 +1,10 @@
-# GMD
-GMD Blockpost
+Blogposts:
+- (RollABall) https://github.com/ymersod/GMD/blob/main/Gods%20game/DevLogs/RollABall.md
+- (Design) https://github.com/ymersod/GMD/blob/main/Gods%20game/Design/Design.md
+- (Milestones) https://github.com/ymersod/GMD/blob/main/Gods%20game/DevLogs/milestones.md
+- (Devlog1) https://github.com/ymersod/GMD/blob/main/Gods%20game/DevLogs/DevLog1.md
+- (Devlog2) https://github.com/ymersod/GMD/blob/main/Gods%20game/DevLogs/Devlog2.md
+- (Devlog3) https://github.com/ymersod/GMD/blob/main/Gods%20game/DevLogs/DevLog3.md
+- (Showoff) https://github.com/ymersod/GMD/blob/main/Gods%20game/DevLogs/Showoff.md
 
-1. ROLL A BALL(er)
-This is a game about rolling a lil ball
-I thought the PlayerInput component was cool - i had not heard of that one before. Learning a bit about how to make pretty colors was nice. Using the F key to target different GameObjects was a nice hotkey to learn about since it helps traversing the scene view much easier.
-I didn't put to much effort into making it cool, just you wait for the next one ;)
-https://ymersod.github.io/RollABall/
+- 
