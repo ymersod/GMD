@@ -22,6 +22,6 @@ to continue with this exact project after the project is done. But i did make a 
 
 
 New focus:
-- Tie up the game with an actual gameplay loop
+- Tie up the game with an actual gameplay loop 
 
 The game might have combat, however there isnt really a **start**, **end** & **objective** atm, i want to make that :)
