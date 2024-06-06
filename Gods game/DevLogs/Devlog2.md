@@ -1,5 +1,6 @@
 So for the past time i finished first up all the **core elements**, however most is still 'individual' pieces. I made my own scuffed world **generation** and **pathing**(Doesn't work 100%) to make the **combat** as finished as i could.
 I ended up scrapping the **Map** for now, as it doesn't make sense to draw your own map on an arcade machine.
+I did not however get to the last 2 elements **Options** & **Saving/Loading** from my _focus_ list from last devlog
 
 Now that i have a lot of pieces to work with i thought it would be a good time to get started on rewamping the architecture... however i decided on not to do it - mainly i think the architecture isn't terrible, buuuut that being said
 there's a lot of room for improvement. 
