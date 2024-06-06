@@ -25,6 +25,7 @@ Blogposts:
 - (Devlog2) https://github.com/ymersod/GMD/blob/main/Gods%20game/DevLogs/Devlog2.md
 - (Devlog3) https://github.com/ymersod/GMD/blob/main/Gods%20game/DevLogs/DevLog3.md
 - (Showoff) https://github.com/ymersod/GMD/blob/main/Gods%20game/DevLogs/Showoff.md
+- (Death) https://admurin.itch.io/free-monster-pack-character
 
 Sources
 -
@@ -36,6 +37,7 @@ Sources (USED):
 - (Swords) https://assetstore.unity.com/packages/2d/gui/icons/2d-pixel-art-icons-swords-259620
 - (Healthbar) https://adwitr.itch.io/pixel-health-bar-asset-pack-2
 - (Inventory) https://arydian.itch.io/simple-sprite-inventory
+- (Player) https://daviscorsac.itch.io/character-template
 
 - (Sword sound) https://www.youtube.com/watch?v=4bJI-e28kFg&ab_channel=Becomeabetteryou
 - (Fireball sound) https://www.youtube.com/watch?v=FJGdoPmspiU&ab_channel=FreeAudioZone
@@ -43,4 +45,4 @@ Sources (USED):
 Sources (PLANNED TO USE):
 - https://assetstore.unity.com/packages/2d/fonts/free-pixel-font-thaleah-140059
 - https://trevor-pupkin.itch.io/roguelike-dungeon-asset-bundle
-- https://admurin.itch.io/free-monster-pack-character
+- (Player) https://admurin.itch.io/free-monster-pack-character
