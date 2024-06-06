@@ -84,7 +84,7 @@ public class Movement : MonoBehaviour
     }
 
 
-
+    //TODO: Can maybe used to kinematicly check for hitboxes
     /* bool RayCastForEnemyHitBox()
     {   
         Vector2 start = player_boxcollider.bounds.min; //Start point
