@@ -43,7 +43,7 @@ A little list in somewhat order of what i made:
 
 Whew - that's a lot of stuff :D
 
-Right not my focus is on making the map work afterwards these are the things i want to do in the near future:
+Right not my focus is on making an inventory system:
 1. Make some barebone world gen
 2. Expand on LOS (enemies should move smart not just at player)
 3. Make player 'feel' better - (_Dash, Attack, Spells_)
