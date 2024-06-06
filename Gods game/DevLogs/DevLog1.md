@@ -43,7 +43,7 @@ A little list in somewhat order of what i made:
 
 Whew - that's a lot of stuff :D
 
-Right not my focus is on making an inventory system:
+Right not my focus is fixing the loose ends so the **Combat** milestone can be completed afterwards i want to get started on these
 1. Make some barebone world gen
 2. Expand on LOS (enemies should move smart not just at player)
 3. Make player 'feel' better - (_Dash, Attack, Spells_)
