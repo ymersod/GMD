@@ -1,7 +1,8 @@
 # Milestones
 + Minimum gameplay loop
-+ Map drawing
-+ 3 Types of enemies
++ Minimum combat requirements
++ Make it work on VIA Arcade machine
+
 # Core elements
 + Movement
 + Combat system
