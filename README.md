@@ -15,6 +15,7 @@ Controls:
 - **Dash**: Shift
 - **Inventory**: I
    - **Use Item**: E
+ 
 Blogpost links :)
 -
 Blogposts:
