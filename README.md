@@ -12,9 +12,9 @@ Controls:
 - **AltAttack**: Right Click
 - **Interact**: Space
 - **Map**: M
+- **Dash**: Shift
 - **Inventory**: I
    - **Use Item**: E
-   - 
 Blogpost links :)
 -
 Blogposts:
